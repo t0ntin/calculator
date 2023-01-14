@@ -3,13 +3,20 @@ const display2 = document.querySelector(".display2");
 const display1 = document.querySelector(".display1");
 const operationButtons = document.querySelectorAll(".operator");
 const numberButtons = document.querySelectorAll(".num-btn");
+const clearBtn = document.querySelectorAll("#clear-btn");
+const signChangeBtn = document.querySelectorAll("#sign-change-btn");
+
 
 let operator = "";
 let num1 = "";
 let num2 = "";
+let result = 0;
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
+      if (button.innerText === "." && display2.value.includes(".")) {
+        return
+      }
       display2.value += button.innerText;
   });
 });
@@ -19,6 +26,7 @@ operationButtons.forEach((button) => {
     if (num1 == "") {
       operator = button.innerText;
       num1 = display2.value;
+      display1.innerText = num1;
     console.log("num1 at opbuttons = " + num1);
       display2.value = "";
     } else {
@@ -29,6 +37,7 @@ operationButtons.forEach((button) => {
       console.log(result);
       display2.value = "";
       num1 = result;
+      display1.innerText = num1;
       num2 = "";
     }
   });
@@ -36,13 +45,34 @@ operationButtons.forEach((button) => {
 
 equalsBtn.addEventListener("click", () => {
     num2 = display2.value;
-    console.log("num2 at resilt " +num2);
-    display2.value = operate(operator, num1, num2);
-    // operate(operator, num1, num2);
-    display1.value = result;
-    num2 = "";
-    operator = "";
-  
+    display2.innerText = num2;
+    console.log("num2 at result " +num2);
+    // display2.value = operate(operator, num1, num2);
+    let check = operate(operator, num1, num2);
+    if(check === undefined){
+        display2.value = "";
+    }else{
+        display2.value = check;
+    }
+    operator = ""; 
+    num2 = "";  
+});
+
+clearBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+  clearCalculator();
+  });
+});
+
+signChangeBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+      if (display2.value > 0) {
+        display2.value = display2.value * -1;
+        console.log(display2.value);
+      } else if (display2.value.includes("-")){
+        display2.value = Math.abs(display2.value);
+      }
+  });
 });
 
 const operate = (operator, num1, num2) => {
@@ -53,15 +83,42 @@ const operate = (operator, num1, num2) => {
     console.log("num1 at operate = " + num1);
     console.log("num2 at operate = " + num2);
   if (operator === "+") {
-    return result = num1 + num2;
+    return result = roundResult((num1 + num2));
   } else if (operator === "-") {
-    return result = num1 - num2;
+    return result = roundResult((num1 - num2));
   } else if (operator === "x") {
-    return result = num1 * num2;
+    return result = roundResult((num1 * num2));
+  } else if (operator === "÷" && num2 ===0) {
+    display1.innerText = "ERROR"
+    // clearCalculator();
+    
+    console.log("num1 after error found: " + num1);
+    operator = "÷"
+    return 
   } else if (operator === "÷") {
-    return result = num1 / num2;
-  } else {
+    return result = roundResult((num1 / num2));
+  }
+   else {
     console.log("Invalid operator");
     return;
   }
 }
+
+function roundResult(number) {
+  return Math.round(number * 1000) / 1000
+}
+
+function clearCalculator() {
+  num1 = "";
+  num2 = "";
+  operator = "";
+  display2.value = "";
+  display1.innerText = "";
+}
+
+function evaluate() {
+  if (operator === "÷" && num2 === 0) {
+  alert("you cannot divide by zero");
+}
+}
+
