@@ -1,48 +1,67 @@
 const equalsBtn = document.querySelector("#btn-equals");
-const displayP = document.querySelector(".displayP");
-const operationButtons = document.querySelectorAll(".op-btn");
+const display2 = document.querySelector(".display2");
+const display1 = document.querySelector(".display1");
+const operationButtons = document.querySelectorAll(".operator");
 const numberButtons = document.querySelectorAll(".num-btn");
 
-const add = (a, b) => a + b;
-const subtract = (a, b) => a - b;
-const multiply = (a, b) => a * b;
-const divide = (a, b) => a / b;
-
 let operator = "";
-let num1 = 0;
-let num2 = 0;
+let num1 = "";
+let num2 = "";
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    displayP.innerText = "";
-    displayP.innerText += button.innerText;
+      display2.value += button.innerText;
   });
 });
 
 operationButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    operator = button.innerText;
-    num1 = parseFloat(displayP.innerText);
-    displayP.innerText = operator;
+    if (num1 == "") {
+      operator = button.innerText;
+      num1 = display2.value;
+    console.log("num1 at opbuttons = " + num1);
+      display2.value = "";
+    } else {
+        num2 = display2.value;
+        operate(operator, num1, num2);
+        operator = button.innerText;
+      console.log(num2);
+      console.log(result);
+      display2.value = "";
+      num1 = result;
+      num2 = "";
+    }
   });
 });
 
 equalsBtn.addEventListener("click", () => {
-  num2 = parseFloat(displayP.innerText);
-  displayP.innerText = operate(operator, num1, num2); //this shows the current result to the user.
+    num2 = display2.value;
+    console.log("num2 at resilt " +num2);
+    display2.value = operate(operator, num1, num2);
+    // operate(operator, num1, num2);
+    display1.value = result;
+    num2 = "";
+    operator = "";
+  
 });
 
 const operate = (operator, num1, num2) => {
-  switch (operator) {
-    case "+":
-      return add(num1, num2);
-    case "-":
-      return subtract(num1, num2);
-    case "x":
-      return multiply(num1, num2);
-    case "÷":
-      return divide(num1, num2);
-    default:
-      return "Invalid operator";
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+    console.log("operator at operate = " + operator);
+
+    console.log("num1 at operate = " + num1);
+    console.log("num2 at operate = " + num2);
+  if (operator === "+") {
+    return result = num1 + num2;
+  } else if (operator === "-") {
+    return result = num1 - num2;
+  } else if (operator === "x") {
+    return result = num1 * num2;
+  } else if (operator === "÷") {
+    return result = num1 / num2;
+  } else {
+    console.log("Invalid operator");
+    return;
   }
-};
+}
