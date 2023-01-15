@@ -10,7 +10,7 @@
 }
 
 :root {
-
+--BOX-SHADOW-COLOR: rgba(17, 15, 44, 0.904);
 }
 
 html {
@@ -49,7 +49,12 @@ img {
 
 .calculator-container {
   margin-top: .5rem;
-  width: 346px;
+  width: 365px;
+  padding: 10px;
+  border: 1px solid rgb(101, 198, 256);
+  border-radius: 5px;
+  box-shadow: 0 1px var(--BOX-SHADOW-COLOR), 1px 0 var(--BOX-SHADOW-COLOR), 1px 2px var(--BOX-SHADOW-COLOR), 2px 1px var(--BOX-SHADOW-COLOR), 2px 3px var(--BOX-SHADOW-COLOR), 3px 2px var(--BOX-SHADOW-COLOR), 3px 4px var(--BOX-SHADOW-COLOR), 4px 3px var(--BOX-SHADOW-COLOR), 4px 5px var(--BOX-SHADOW-COLOR), 5px 4px var(--BOX-SHADOW-COLOR), 5px 6px var(--BOX-SHADOW-COLOR), 6px 5px var(--BOX-SHADOW-COLOR), 6px 7px var(--BOX-SHADOW-COLOR), 7px 6px var(--BOX-SHADOW-COLOR), 7px 8px var(--BOX-SHADOW-COLOR), 8px 7px var(--BOX-SHADOW-COLOR), 8px 9px var(--BOX-SHADOW-COLOR);
+
 }
 
 .display   {
@@ -60,7 +65,7 @@ img {
   /* text-align: center; */
   width: 100%;
   height: 65px;
-  border: 1px solid rgb(101, 198, 255);
+  border: 1px solid rgb(101, 198, 256);
   border-radius: 3px;
   margin-bottom: .5rem;
 }
@@ -84,8 +89,10 @@ img {
     #032d5e,
     #012044
   );
-  border: 1px solid rgb(101, 198, 255);
+  border: 1px solid rgb(74, 234, 255);
   border-radius: 3px;
+  box-shadow: inset 0px 0px 10px 4px rgba(0, 0, 0, 0.89);
+
 }
 
 .display {
@@ -111,11 +118,12 @@ img {
     #012044
   );
   padding-right: 10px;
+  box-shadow: inset 0px 0px 10px 4px rgba(0, 0, 0, 0.89);
 }
 
 .top-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 2.1fr;
   gap: .5rem;
   margin-bottom: .5rem;
 }
@@ -153,10 +161,10 @@ img {
     90deg,
     rgb(0, 0, 0) 0%,
     rgb(12, 4, 126) 50%,
-    rgb(5, 21, 170) 100%
+    rgb(5, 21, 171) 100%
   );
   color: rgb(134, 205, 247);
-  border: 1px solid rgb(101, 198, 255);
+  border: 1px solid rgb(90, 233, 252);
 
   border-radius: 3px;
   box-shadow: 2px 2px 3px rgb(85, 85, 85);
