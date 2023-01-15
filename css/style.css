@@ -10,24 +10,17 @@
 }
 
 :root {
---BOX-SHADOW-COLOR: rgba(17, 15, 44, 0.904);
+--BOX-SHADOW-COLOR: rgba(68, 68, 73, 0.904);
 }
 
 html {
   height: 100%;
   font-family: "Lato", sans-serif;
-
 }
 
 body {
   height: 100vh;
-  background: linear-gradient(
-    90deg,
-    #000000,
-    #1d1d1d,
-    #202020
-  );
-
+  background: url(/images/background.jpg) repeat center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,14 +46,16 @@ img {
   padding: 10px;
   border: 1px solid rgb(101, 198, 256);
   border-radius: 5px;
-  box-shadow: 0 1px var(--BOX-SHADOW-COLOR), 1px 0 var(--BOX-SHADOW-COLOR), 1px 2px var(--BOX-SHADOW-COLOR), 2px 1px var(--BOX-SHADOW-COLOR), 2px 3px var(--BOX-SHADOW-COLOR), 3px 2px var(--BOX-SHADOW-COLOR), 3px 4px var(--BOX-SHADOW-COLOR), 4px 3px var(--BOX-SHADOW-COLOR), 4px 5px var(--BOX-SHADOW-COLOR), 5px 4px var(--BOX-SHADOW-COLOR), 5px 6px var(--BOX-SHADOW-COLOR), 6px 5px var(--BOX-SHADOW-COLOR), 6px 7px var(--BOX-SHADOW-COLOR), 7px 6px var(--BOX-SHADOW-COLOR), 7px 8px var(--BOX-SHADOW-COLOR), 8px 7px var(--BOX-SHADOW-COLOR), 8px 9px var(--BOX-SHADOW-COLOR);
+  background-color: #00000077;
+  box-shadow: 0 1px var(--BOX-SHADOW-COLOR), 1px 0 var(--BOX-SHADOW-COLOR), 1px 2px var(--BOX-SHADOW-COLOR), 2px 1px var(--BOX-SHADOW-COLOR), 2px 3px var(--BOX-SHADOW-COLOR), 3px 2px var(--BOX-SHADOW-COLOR), 3px 4px var(--BOX-SHADOW-COLOR), 4px 3px var(--BOX-SHADOW-COLOR), 4px 5px var(--BOX-SHADOW-COLOR), 5px 4px var(--BOX-SHADOW-COLOR), 5px 6px var(--BOX-SHADOW-COLOR), 6px 5px var(--BOX-SHADOW-COLOR), 6px 7px var(--BOX-SHADOW-COLOR), 7px 6px var(--BOX-SHADOW-COLOR), 7px 8px var(--BOX-SHADOW-COLOR), 8px 7px var(--BOX-SHADOW-COLOR);
 
 }
 
 .display   {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
+  /* justify-content: flex-start; */
   align-content: center;
   /* text-align: center; */
   width: 100%;
@@ -68,6 +63,18 @@ img {
   border: 1px solid rgb(101, 198, 256);
   border-radius: 3px;
   margin-bottom: .5rem;
+}
+
+.backspace-btn {
+  background: none;
+  border: none;
+  margin: 0 3px;
+}
+
+.backspace-img {
+  width: 25px;
+  /* color: white; */
+  filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(192deg) brightness(104%) contrast(101%);
 }
 
 .display1 {
@@ -95,14 +102,6 @@ img {
 
 }
 
-.display {
-    display: flex;
-  align-items: center;
-  /* align-content: center; */
-  justify-content: space-around;
-  /* width: 10px; */
-}
-
 .display .display2  {
   color: rgb(74, 234, 255);
   font-size: 2rem;
@@ -120,6 +119,8 @@ img {
   padding-right: 10px;
   box-shadow: inset 0px 0px 10px 4px rgba(0, 0, 0, 0.89);
 }
+
+
 
 .top-container {
   display: grid;
@@ -149,13 +150,10 @@ img {
 }
 
 .btn {
-  /* flex: 1; */
   width: 80px;
   height: 60px;
   transition: box-shadow background-color 0.2s linear;
-  /* background: none; */
   font-size: 2rem;
-  /* font-weight: bold; */
   padding: 0.5rem;
   background: linear-gradient(
     90deg,
@@ -165,18 +163,15 @@ img {
   );
   color: rgb(134, 205, 247);
   border: 1px solid rgb(90, 233, 252);
-
   border-radius: 3px;
   box-shadow: 2px 2px 3px rgb(85, 85, 85);
   transition: .2s text-shadow;
 }
 
 .btn:hover {
-  /* background-color: green; */
   font-weight: bold;
   color: white;
   text-shadow: 2px 2px 3px rgb(74, 192, 247);
-
 }
 
 .btn:active {
