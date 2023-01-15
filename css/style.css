@@ -20,11 +20,7 @@ html {
 
 body {
   height: 100vh;
-<<<<<<< HEAD
   background-color: rgba(0, 0, 0, 0.89);
-=======
-  background: url(images/background.jpg) repeat center;
->>>>>>> b4a885fb10b9b374b18510d6d52481a4b11c0574
   display: flex;
   flex-direction: column;
   align-items: center;
